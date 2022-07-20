@@ -21,7 +21,7 @@ const CartItem=(props)=> {
                         {/* <img onClick={this.increaseQuantity} alt="increase button" className="action-icons" src="https://cdn-icons.flaticon.com/png/512/2997/premium/2997933.png?token=exp=1657785854~hmac=007b41c10122254be4e7c4cb79a64765" /> */}
                         <img onClick={()=>props.increaseQuantity(props.product)} alt="increase button" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/1828/1828925.png" />
                         <img onClick={()=>props.decreaseQuantity(props.product)} alt="decrease button" className="action-icons" src="https://cdn-icons-png.flaticon.com/128/61/61067.png" />
-                        <img alt="delete button" onClick={()=>props.deleteProduct(props.product.id)} className="action-icons" src="https://cdn-icons.flaticon.com/png/512/2907/premium/2907762.png?token=exp=1658219697~hmac=c93886d4f0ecb621ae55a86622f4698e" />
+                        <img alt="delete button" onClick={()=>props.deleteProduct(props.product.id)} className="action-icons" src="https://img.icons8.com/material-rounded/344/filled-trash.png" />
                     </div>
                 </div>
             </div>

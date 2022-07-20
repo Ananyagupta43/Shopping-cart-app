@@ -6,7 +6,7 @@ const Navbar=(props)=> {  // inheriting component from React Component
         return (
             <div style={styles.nav}>
               <div style={styles.cartIconContainer} >
-              <img style={styles.cart} src="https://cdn-icons.flaticon.com/png/512/649/premium/649931.png?token=exp=1658221043~hmac=0d36aedce4fb511c2a0c049f741d2f3c" alt="cart"/>
+              <img style={styles.cart} src="https://img.icons8.com/ios/344/shopping-cart.png" alt="cart"/>
               <span style={styles.cartCount}>{props.count}</span>
                 </div> 
             </div>
