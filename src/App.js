@@ -2,8 +2,9 @@ import CartItem from './CartItem';
 import Cart from './Cart';
 import Navbar from './Navbar';
 import React from 'react';
-import * as firebase from 'firebase/compat/app';
-import 'firebase/firestore';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 class App extends React.Component {
   constructor() {
