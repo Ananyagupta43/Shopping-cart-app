@@ -46,3 +46,14 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.button-add{
+  height: 40px;
+  width: 120px;
+  margin: 15px;
+  border: 1px solid #0f79f9;
+  border-radius: 5px;
+  font-size: 15px;
+  background-color: #097ecb;
+  color: #f9f7f7;
+}

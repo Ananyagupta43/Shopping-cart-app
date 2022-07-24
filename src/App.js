@@ -68,36 +68,70 @@ class App extends React.Component {
     const index = product.indexOf(item);
 
     //console.log(products);
-    product[index].qty += 1;
-    //console.log(product[index]);
+    // product[index].qty += 1;
+    // //console.log(product[index]);
 
-    this.setState({
-      product: product
-    })
+    // this.setState({
+    //   product: product
+    // })
 
+    const docRef=firebase.firestore().collection('product').doc(product[index].id);
+     docRef.update({
+    qty:product[index].qty +1
+     }).then(()=>{
+      console.log('updated doc')     // here we are not using setState because we have used snapshot which is a listener so when quantity 
+                                     //will get increased in firebase it will call snapshot and will be shown on ui 
+     }).catch((error)=>{
+      console.log('error doc '+error)
+     })
   }
 
   handleDecrease = (item1) => {
     const { product } = this.state;
     //console.log(item1);
     const index = product.indexOf(item1);
+    const docRef=firebase.firestore().collection('product').doc(product[index].id);
+
     if (product[index].qty == 0) {
-      product[index].qty = 0
+     // product[index].qty = 0
+     docRef.update({
+      qty:0
+       }).then(()=>{
+        console.log('updated doc')     // here we are not using setState because we have used snapshot which is a listener so when quantity                                      //will get increased in firebase it will call snapshot and will be shown on ui 
+       }).catch((error)=>{
+        console.log('error doc '+error)
+       })
     } else {
-      product[index].qty -= 1;
+      //product[index].qty -= 1;
+      docRef.update({
+        qty:product[index].qty-1
+         }).then(()=>{
+          console.log('updated doc')     // here we are not using setState because we have used snapshot which is a listener so when quantity 
+                                         //will get increased in firebase it will call snapshot and will be shown on ui 
+         }).catch((error)=>{
+          console.log('error doc '+error)
+         })
     }
 
-    this.setState({
-      product: product
-    })
+    // this.setState({
+    //   product: product
+    // })
   }
 
   handleDelete = (id) => {
     const { product } = this.state;
-    const item = product.filter((item) => item.id !== id)
-    this.setState({
-      product: item
-    })
+    // const item = product.filter((item) => item.id !== id)
+    // this.setState({
+    //   product: item
+    // })
+
+    const docRef=firebase.firestore().collection('product').doc(id);  // we are passing unique id of doc
+    docRef.delete()
+    .then(()=>{
+      console.log("deleted");
+    }).catch((error)=>{
+      console.log("error");
+  })
 
   }
 
@@ -118,11 +152,28 @@ class App extends React.Component {
     })
     return total;
   }
+
+  // addProduct=()=>{
+  //     firebase
+  //     .firestore()
+  //     .collection('product')
+  //     .add({
+  //       img:"https://images.unsplash.com/photo-1606311698062-21c4f57cb27f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=758&q=80",
+  //       title:"Harry Potter Books Collection",
+  //       price:7000,
+  //       qty:7
+  //     }).then((docRef)=>{
+  //       console.log(docRef + "product has been added");
+  //     }).catch((error)=>{
+  //       console.log(error);
+  //     })
+  // }
   render() {
     const { product,loading } = this.state;
     return (
       <div className="App">
         <Navbar count={this.getCartCount()} />
+        {/* <button onClick={this.addProduct} className="button-add">Add To firebase</button> */}
         <h1> Shopping Cart</h1>
         <Cart
           product={product}
